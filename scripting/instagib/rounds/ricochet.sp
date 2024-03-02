@@ -79,6 +79,13 @@ public Action Hook_OnTouch(int iEntity)
 
 	Handle Trace = TR_TraceRayFilterEx(vecOrigin, vecAngles, MASK_SHOT, RayType_Infinite, TraceEntityFilter_IgnoreEntity, iEntity);
 
+	if (TR_GetSurfaceFlags(Trace) & SURF_SKY) 
+	{
+		CloseHandle(Trace);
+		SDKUnhook(iEntity, SDKHook_Touch, Hook_OnTouch);
+		return Plugin_Handled;
+	}
+
 	float vecNormal[3];
 	TR_GetPlaneNormal(Trace, vecNormal);
 	Trace.Close();
