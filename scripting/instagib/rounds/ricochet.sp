@@ -16,7 +16,7 @@ void SR_Ricochet_Init()
 
 	round.OnEntCreated = CustomRoundRicochet_OnEntCreated;
 	
-	ProjectileBounceSound = "weapons/crossbow/bolt_fly4.wav";
+	SpecialRoundConfig_String(round.Name, "ProjectileBounceSound", ProjectileBounceSound, sizeof(ProjectileBounceSound), "weapons/crossbow/bolt_fly4.wav");
 	InstagibPrecacheSound(ProjectileBounceSound);
 
 	// How many times should projectile bounce off from walls?
