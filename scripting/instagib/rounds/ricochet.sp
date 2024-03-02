@@ -1,5 +1,4 @@
 static int MaxBounces;
-static bool IsRicochet;
 
 static int numBounces[2048];
 
