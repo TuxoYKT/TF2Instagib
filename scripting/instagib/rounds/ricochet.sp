@@ -94,7 +94,7 @@ public Action Hook_OnTouch(int iEntity)
 	float vecNewAngles[3];
 	GetVectorAngles(vecBounceVec, vecNewAngles);
 	
-	EmitSoundToAll("ProjectileBounceSound", iEntity, SNDCHAN_AUTO, SNDLEVEL_GUNFIRE, _, _);
+	EmitSoundToAll(ProjectileBounceSound, iEntity);
 	TeleportEntity(iEntity, NULL_VECTOR, vecNewAngles, vecBounceVec);
 
 	numBounces[iEntity]++;
