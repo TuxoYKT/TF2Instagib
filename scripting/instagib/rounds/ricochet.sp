@@ -2,6 +2,8 @@ static int MaxBounces;
 
 static int numBounces[2048];
 
+static char ProjectileBounceSound[PLATFORM_MAX_PATH];
+
 void SR_Ricochet_Init()
 {
 	InstagibRound round;
@@ -13,6 +15,9 @@ void SR_Ricochet_Init()
 	round.MainWeapon = CustomRoundRicochet_MainWeapon();
 
 	round.OnEntCreated = CustomRoundRicochet_OnEntCreated;
+	
+	ProjectileBounceSound = "weapons/crossbow/bolt_fly4.wav";
+	InstagibPrecacheSound(ProjectileBounceSound);
 
 	// How many times should projectile bounce off from walls?
 	MaxBounces = SpecialRoundConfig_Num(round.Name, "Bounces", 8);
@@ -89,6 +94,7 @@ public Action Hook_OnTouch(int iEntity)
 	float vecNewAngles[3];
 	GetVectorAngles(vecBounceVec, vecNewAngles);
 	
+	EmitSoundToAll("ProjectileBounceSound", iEntity, SNDCHAN_AUTO, SNDLEVEL_GUNFIRE, _, _);
 	TeleportEntity(iEntity, NULL_VECTOR, vecNewAngles, vecBounceVec);
 
 	numBounces[iEntity]++;
