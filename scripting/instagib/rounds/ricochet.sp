@@ -43,9 +43,9 @@ static Handle CustomRoundRicochet_MainWeapon()
 	TF2Items_SetAttribute(hndl, 4, 51, 1.0);	// Crits on headshot
 	TF2Items_SetAttribute(hndl, 5, 305, -1.0);  // Fires tracer rounds
 	TF2Items_SetAttribute(hndl, 6, 851, 2.0);   // i am speed
-
-	TF2Items_SetAttribute(hndl, 7, 2025, 1.0);  // killstreak
-
+	if (g_Config.EnabledKillstreaks) {
+		TF2Items_SetAttribute(hndl, 7, 2025, 1.0);  // killstreak
+	}
 	return hndl;
 }
 
